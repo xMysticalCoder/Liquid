@@ -4,8 +4,16 @@ def readcode():
   if code.startswith("p(\"") and code.endswith("\")"):
     print(code[3:-2])
   elif code.startswith("v "):
-    code.split()
-    
+    r = code.split()
+    variables[r[1]] = r[-1]
+    print(variables)
+  elif code.startswith("p(") and code.endswith(")"):
+    e = code[2:-1]
+    try:
+      print(variables[e])
+    except:
+      print("No variable", e, "found")
+
     
   else:
     print("Syntax not understood.")
@@ -13,3 +21,4 @@ def readcode():
 while True:
   code = input(">> ")
   readcode()
+  
